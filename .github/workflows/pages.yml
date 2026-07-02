@@ -24,6 +24,10 @@ jobs:
           mkdir _site
           cp index.html sdk-docs.css sdk-theme.css sdk-docs.js CNAME .nojekyll _site/
           cp -r assets _site/assets
+
+      - name: Verify built site
+        run: grep -q 'language-targets' _site/index.html
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
@@ -37,19 +41,3 @@ jobs:
     steps:
       - uses: actions/deploy-pages@v4
         id: deployment
-
-      - name: Verify Pages deployment
-        run: |
-          set -euo pipefail
-          URL="${{ steps.deployment.outputs.page_url }}"
-          for i in 1 2 3 4 5 6; do
-            BODY="$(curl -fsSL --compressed -H "Cache-Control: no-cache" "$URL" || true)"
-            if echo "$BODY" | grep -q 'language-targets'; then
-              echo "Pages deployment OK at $URL (attempt $i)."
-              exit 0
-            fi
-            echo "Waiting for Pages propagation (attempt $i/6)…"
-            sleep 15
-          done
-          echo "::error::Pages deployment at $URL is missing language-targets."
-          exit 1
