@@ -53,7 +53,7 @@
   sections.forEach(function (s) { observer.observe(s) })
 
   // ── Mobile sidebar toggle ──
-  var menuBtn = document.querySelector('.docs-menu-btn')
+  var menuBtn = document.querySelector('.docs-sidebar-toggle')
   var sidebar = document.querySelector('.docs-sidebar')
   var scrim = document.querySelector('.docs-scrim')
   function closeSidebar() {
