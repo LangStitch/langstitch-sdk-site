@@ -1,19 +1,20 @@
 # LangStitch SDK — Documentation site
 
-Static documentation for the **LangStitch Python SDK** (`langstitch-sdk` on PyPI).
+Static documentation for the **LangStitch multi-language SDK**. Python ships on PyPI as `langstitch-sdk`; Spring AI (Java), Go, and Rust runtimes share the same project structure and canvas export format.
 
 - **Live:** https://sdk.langstitch.com
-- **Package:** https://pypi.org/project/langstitch-sdk/
+- **Python package:** https://pypi.org/project/langstitch-sdk/
 - **Product:** https://langstitch.com
+- **LangTailor IDE:** https://langtailor.langstitch.com
 
 ## Structure
 
 | Path | Purpose |
 |------|---------|
-| `index.html` | SDK docs (install, quickstart, concepts, guides, reference) |
-| `sdk-theme.css` | Design tokens (LangTailor site personality, sky-blue SDK accent) |
-| `sdk-docs.css` | Docs layout and components |
+| `index.html` | SDK docs — language targets, Python install, quickstart, concepts, guides, reference |
+| `sdk-docs.css` | Docs layout, language grid, components (theme inlined) |
 | `sdk-docs.js` | Sidebar scrollspy, copy buttons, mobile nav |
+| `assets/js/seo.js` | Meta tags + JSON-LD (multi-language SDK, FAQ) |
 | `assets/brand-logo.svg` | SDK favicon / nav logo |
 
 Deployed to GitHub Pages and Hostinger on every push to `main`.

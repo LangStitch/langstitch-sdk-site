@@ -622,4 +622,115 @@ code {
 
 @media (max-width: 560px) {
   .docs-cards { grid-template-columns: 1fr; }
+  .docs-lang-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Language targets & hero tags ───────────────────── */
+
+.docs-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.docs-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 4px 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text-3);
+  background: var(--surface);
+}
+
+.docs-tag--live {
+  color: var(--signal);
+  border-color: var(--signal-border);
+  background: var(--signal-dim);
+}
+
+.docs-section-lede {
+  margin: 0 0 20px;
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+.docs-lang-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.docs-lang {
+  background: var(--surface);
+  padding: 18px;
+  opacity: 0.72;
+}
+
+.docs-lang--live {
+  opacity: 1;
+  box-shadow: inset 0 2px 0 var(--signal);
+}
+
+.docs-lang__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.docs-lang__head h3 {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+}
+
+.docs-lang__badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 7px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.docs-lang__badge--live {
+  color: var(--signal);
+  border-color: var(--signal-border);
+  background: var(--signal-dim);
+}
+
+.docs-lang p {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: var(--text-2);
+  line-height: 1.55;
+}
+
+.docs-lang__install {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text);
+  margin-bottom: 10px !important;
+}
+
+.docs-lang__link {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--signal);
 }
