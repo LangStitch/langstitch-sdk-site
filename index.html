@@ -20,25 +20,29 @@
   <link rel="stylesheet" href="sdk-docs.css" />
 </head>
 <body>
-  <header class="docs-header">
-    <a class="nav-logo" href="https://langstitch.com/">
+  <nav class="nav">
+    <a class="nav-logo" href="./">
       <img class="nav-logo__icon" src="assets/brand-logo.svg" width="26" height="26" alt="" />
       <span class="nav-logo__text">
         <span class="nav-logo__title">LangStitch</span>
         <span class="nav-logo__subtitle">Python SDK</span>
       </span>
     </a>
-    <button class="docs-menu-btn" aria-label="Toggle navigation">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-    <nav class="docs-nav">
-      <a href="https://langstitch.com/">Home</a>
-      <a href="https://langtailor.langstitch.com">LangTailor</a>
-      <a href="https://marketplace.langstitch.com">Marketplace</a>
-      <a href="https://github.com/LangStitch">GitHub</a>
-      <a class="docs-nav-cta" href="https://pypi.org/project/langstitch-sdk/">PyPI</a>
-    </nav>
-  </header>
+    <div class="nav-end">
+      <button class="docs-menu-btn" type="button" aria-label="Open documentation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <div class="nav-links">
+        <a href="#installation">Install</a>
+        <a href="#quickstart">Quickstart</a>
+        <a href="https://langtailor.langstitch.com">LangTailor</a>
+        <a href="https://marketplace.langstitch.com">Marketplace</a>
+        <a class="nav-cta" href="https://pypi.org/project/langstitch-sdk/">PyPI</a>
+      </div>
+    </div>
+  </nav>
 
   <div class="docs-scrim"></div>
 
