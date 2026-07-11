@@ -64,7 +64,7 @@
   );
   upsertMeta("googlebot", "index, follow, max-image-preview:large");
   upsertMeta("bingbot", "index, follow");
-  upsertMeta("theme-color", "#38bdf8");
+  upsertMeta("theme-color", "#00e5a0");
   upsertLink("canonical", SITE_ORIGIN + "/");
   upsertMeta("og:site_name", "LangStitch", true);
   upsertMeta("og:type", "website", true);
@@ -72,10 +72,14 @@
   upsertMeta("og:title", TITLE, true);
   upsertMeta("og:description", DESCRIPTION, true);
   upsertMeta("og:locale", "en_US", true);
+  upsertMeta("og:image", SITE_ORIGIN + "/assets/og-card.png", true);
+  upsertMeta("og:image:type", "image/png", true);
   upsertMeta("twitter:card", "summary_large_image");
   upsertMeta("twitter:site", TWITTER);
   upsertMeta("twitter:title", TITLE);
   upsertMeta("twitter:description", DESCRIPTION);
+  upsertMeta("twitter:image", SITE_ORIGIN + "/assets/og-card.png");
+  upsertLink("sitemap", SITE_ORIGIN + "/sitemap.xml");
 
   injectJsonLd([
     {
@@ -127,7 +131,7 @@
           acceptedAnswer: {
             "@type": "Answer",
             text:
-              "LangTailor is the visual IDE that designs LangGraph workflows on a canvas and exports production projects for Python, Spring AI, Go, and Rust using the same SDK conventions documented at sdk.langstitch.com."
+              "LangTailor is the visual IDE that designs LangGraph workflows on a canvas and exports projects using the same SDK conventions. Python ships today; Spring AI, Go, and Rust share the export tree and are expanding."
           }
         }
       ]

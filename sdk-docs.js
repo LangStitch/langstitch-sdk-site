@@ -1,4 +1,4 @@
-// LangStitch SDK docs — sidebar scrollspy, copy buttons, mobile sidebar toggle.
+// LangStitch SDK docs — sidebar scrollspy, copy buttons, mobile Contents toggle.
 (function () {
   'use strict'
 
@@ -52,18 +52,25 @@
   )
   sections.forEach(function (s) { observer.observe(s) })
 
-  // ── Mobile sidebar toggle ──
-  var menuBtn = document.querySelector('.docs-sidebar-toggle')
+  // ── Mobile Contents button → docs sidebar (nav-burger stays for site links) ──
+  var menuBtn = document.querySelector('.docs-contents-btn') || document.querySelector('.docs-sidebar-toggle')
   var sidebar = document.querySelector('.docs-sidebar')
   var scrim = document.querySelector('.docs-scrim')
-  function closeSidebar() {
-    if (sidebar) sidebar.classList.remove('open')
-    if (scrim) scrim.classList.remove('open')
+
+  function setSidebarOpen(open) {
+    if (!sidebar) return
+    sidebar.classList.toggle('open', open)
+    if (scrim) scrim.classList.toggle('open', open)
+    if (menuBtn) menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false')
   }
+
+  function closeSidebar() {
+    setSidebarOpen(false)
+  }
+
   if (menuBtn && sidebar) {
     menuBtn.addEventListener('click', function () {
-      sidebar.classList.toggle('open')
-      if (scrim) scrim.classList.toggle('open')
+      setSidebarOpen(!sidebar.classList.contains('open'))
     })
   }
   if (scrim) scrim.addEventListener('click', closeSidebar)

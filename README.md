@@ -4,6 +4,7 @@ Static documentation for the **LangStitch multi-language SDK**. Python ships on 
 
 - **Live:** https://sdk.langstitch.com
 - **Python package:** https://pypi.org/project/langstitch-sdk/
+- **Source:** https://github.com/LangStitch/langstitch-sdk
 - **Product:** https://langstitch.com
 - **LangTailor IDE:** https://langtailor.langstitch.com
 
@@ -14,6 +15,7 @@ Static documentation for the **LangStitch multi-language SDK**. Python ships on 
 | `index.html` | SDK docs — language targets, Python install, quickstart, concepts, guides, reference |
 | `sdk-docs.css` | Docs layout, language grid, components (theme inlined) |
 | `sdk-docs.js` | Sidebar scrollspy, copy buttons, mobile nav |
+| `sitemap.xml` / `robots.txt` | SEO for sdk.langstitch.com |
 | `assets/js/seo.js` | Meta tags + JSON-LD (multi-language SDK, FAQ) |
 | `assets/brand-logo.svg` | SDK favicon / nav logo |
 
@@ -25,8 +27,8 @@ Configure these GitHub Actions secrets on **this repo** (`langstitch-sdk-site`):
 
 | Secret | Value |
 |--------|--------|
-| `FTP_SERVER` | `217.21.84.75` (no `ftp://` prefix) |
-| `FTP_USERNAME` | `u743467360.sdkdeveloper` |
+| `FTP_SERVER` | Hostinger FTP host (no `ftp://` prefix) |
+| `FTP_USERNAME` | FTP username for the sdk.langstitch.com account |
 | `FTP_PASSWORD` | FTP password for that account |
 
 FTP account is scoped to the sdk.langstitch.com docroot — deploy target is `./`.

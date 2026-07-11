@@ -1,0 +1,11 @@
+# https://sdk.langstitch.com/
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://sdk.langstitch.com/sitemap.xml

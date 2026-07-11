@@ -1,4 +1,4 @@
-/* LangStitch SDK — shared design tokens (LangTailor site personality, sky-blue accent) */
+/* LangStitch SDK — shared design tokens (LangTailor site personality, ecosystem signal accent) */
 
 :root {
   --bg: #000000;
@@ -11,9 +11,9 @@
   --text-2: #b4b8c0;
   --text-3: #8b929e;
   --accent: #ffffff;
-  --signal: #38bdf8;
-  --signal-dim: rgba(56, 189, 248, 0.1);
-  --signal-border: rgba(56, 189, 248, 0.35);
+  --signal: #00e5a0;
+  --signal-dim: rgba(0, 229, 160, 0.1);
+  --signal-border: rgba(0, 229, 160, 0.35);
   --warn: #f5a623;
   --warn-dim: rgba(245, 166, 35, 0.08);
   --radius: 4px;

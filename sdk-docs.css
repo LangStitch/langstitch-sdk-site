@@ -1,4 +1,4 @@
-/* LangStitch SDK docs — LangTailor site personality, sky-blue SDK accent */
+/* LangStitch SDK docs — LangTailor site personality, ecosystem signal accent */
 
 /* ── Theme tokens (inlined — no @import) ── */
 :root {
@@ -12,9 +12,9 @@
   --text-2: #b4b8c0;
   --text-3: #8b929e;
   --accent: #ffffff;
-  --signal: #38bdf8;
-  --signal-dim: rgba(56, 189, 248, 0.1);
-  --signal-border: rgba(56, 189, 248, 0.35);
+  --signal: #00e5a0;
+  --signal-dim: rgba(0, 229, 160, 0.1);
+  --signal-border: rgba(0, 229, 160, 0.35);
   --warn: #f5a623;
   --warn-dim: rgba(245, 166, 35, 0.08);
   --radius: 4px;
@@ -27,7 +27,7 @@
   --border-soft: var(--line);
   --muted: var(--text-3);
   --heading: var(--text);
-  --accent-2: #0ea5e9;
+  --accent-2: #00c98c;
   --teal: var(--signal);
   --code-bg: var(--surface);
   --sidebar-w: 256px;
@@ -201,27 +201,48 @@ a:hover { color: var(--signal); }
 }
 
 .docs-sidebar-toggle {
-  display: none;
-  position: fixed;
-  top: calc(var(--nav-h) + 10px);
-  left: 12px;
-  z-index: 90;
-  width: 36px;
-  height: 36px;
-  padding: 8px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
-  cursor: pointer;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
+  display: none !important;
 }
 
-.docs-sidebar-toggle span {
-  display: block;
-  height: 1px;
-  background: var(--text);
+.docs-contents-btn {
+  display: none;
+  appearance: none;
+  margin: 0;
+  padding: 5px 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.docs-contents-btn:hover {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+
+.docs-hero-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.docs-hero-top .docs-eyebrow {
+  margin: 0;
+}
+
+.docs-hero-why {
+  margin: 12px 0 0 !important;
+  font-size: 13px !important;
+  color: var(--text-3) !important;
+  max-width: 58ch;
 }
 
 /* ── Layout ── */
@@ -414,12 +435,17 @@ code {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .docs-code pre {
   margin: 0;
   padding: 14px 16px;
   overflow-x: auto;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: pre-wrap;
   font-family: var(--mono);
   font-size: 11px;
   line-height: 1.6;
@@ -507,6 +533,8 @@ code {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .docs-card h4 {
@@ -571,7 +599,6 @@ code {
 
 @media (max-width: 768px) {
   .nav-burger { display: flex; }
-  .docs-sidebar-toggle { display: flex; }
   .nav-links {
     display: none;
     position: absolute;
@@ -596,6 +623,7 @@ code {
 @media (max-width: 860px) {
   .docs-shell { grid-template-columns: 1fr; }
   .docs-content { padding: 28px 20px 80px; }
+  .docs-contents-btn { display: inline-flex; align-items: center; }
   .docs-sidebar {
     position: fixed;
     top: var(--header-h);
@@ -623,6 +651,15 @@ code {
 @media (max-width: 560px) {
   .docs-cards { grid-template-columns: 1fr; }
   .docs-lang-grid { grid-template-columns: 1fr; }
+  .hero-actions,
+  .docs-hero-actions {
+    flex-direction: column;
+  }
+  .btn,
+  .docs-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ── Language targets & hero tags ───────────────────── */
