@@ -22,11 +22,15 @@ jobs:
       - name: Assemble static site
         run: |
           mkdir _site
-          cp index.html sdk-docs.css sdk-theme.css sdk-docs.js CNAME .nojekyll _site/
+          cp index.html sdk-docs.css sdk-theme.css sdk-docs.js CNAME .nojekyll sitemap.xml robots.txt _site/
           cp -r assets _site/assets
 
       - name: Verify built site
-        run: grep -q 'language-targets' _site/index.html
+        run: |
+          grep -q 'language-targets' _site/index.html
+          grep -Fq 'sdk-docs.css?v=7' _site/index.html
+          test -f _site/sitemap.xml
+          test -f _site/robots.txt
 
       - uses: actions/upload-pages-artifact@v3
         with:

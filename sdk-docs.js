@@ -11,10 +11,21 @@
     btn.type = 'button'
     btn.textContent = 'Copy'
     btn.addEventListener('click', function () {
-      navigator.clipboard.writeText(pre.innerText).then(function () {
-        btn.textContent = 'Copied'
+      if (!navigator.clipboard || !navigator.clipboard.writeText) {
+        btn.textContent = 'Select & copy'
         setTimeout(function () { btn.textContent = 'Copy' }, 1500)
-      })
+        return
+      }
+      navigator.clipboard.writeText(pre.innerText).then(
+        function () {
+          btn.textContent = 'Copied'
+          setTimeout(function () { btn.textContent = 'Copy' }, 1500)
+        },
+        function () {
+          btn.textContent = 'Copy failed'
+          setTimeout(function () { btn.textContent = 'Copy' }, 1500)
+        },
+      )
     })
     block.appendChild(btn)
   })
@@ -42,11 +53,25 @@
     })
   }
 
+  // Track all currently intersecting sections and highlight the topmost one,
+  // so overlapping entries don't leave the highlight on the wrong section.
+  var visible = {}
   var observer = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) setActive(entry.target.id)
+        visible[entry.target.id] = entry.isIntersecting
       })
+      var topmost = null
+      var topOffset = Infinity
+      sections.forEach(function (s) {
+        if (!visible[s.id]) return
+        var top = s.getBoundingClientRect().top
+        if (top < topOffset) {
+          topOffset = top
+          topmost = s.id
+        }
+      })
+      if (topmost) setActive(topmost)
     },
     { rootMargin: '-20% 0px -70% 0px', threshold: 0 },
   )
