@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LangStitch SDK — Multi-language Docs · Python, Spring AI, Go &amp; Rust</title>
-  <meta name="description" content="LangStitch SDK documentation — multi-language agent engineering. Python runtime on PyPI today; Spring AI (Java), Go, and Rust expanding. Decorators, YAML config, CLI, and LangTailor canvas export." />
+  <meta name="description" content="LangStitch SDK documentation — IR v2 compiler, dev run events, multi-language agent engineering. Python runtime on PyPI today; Spring AI (Java), Go, and Rust expanding. Decorators, YAML config, CLI, and LangTailor canvas export." />
   <meta name="keywords" content="LangStitch SDK, LangGraph, Python SDK, Spring AI agents, Go agents, Rust agents, multi-language export, agent engineering, langstitch-sdk, PyPI" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="LangStitch" />
@@ -83,6 +83,8 @@
       <div class="docs-sidebar-group">
         <p class="docs-sidebar-title">Guides</p>
         <a href="#build-run">Build &amp; run</a>
+        <a href="#ir-compiler">IR compiler</a>
+        <a href="#dev-run-events">Dev run events</a>
         <a href="#production">Production</a>
         <a href="#deployment">Deployment</a>
       </div>
@@ -664,10 +666,37 @@ app = LangStitchApp.bootstrap()
 result = app.invoke({"messages": [{"role": "user", "content": "hi"}]})</pre></div>
         </section>
 
+        <section id="ir-compiler" class="docs-section">
+          <h2>IR v2 compiler</h2>
+          <p>LangTailor saves agent workflows as <strong>IR v2</strong> documents (<code>*.langstitch.json</code> with <code>irVersion</code>, <code>logical</code>, <code>presentation</code>, and <code>target</code>). The Python SDK compiles the logical graph into a runnable project — canvas layout is ignored at compile time.</p>
+          <div class="docs-code"><pre>pip install "langstitch-sdk[compiler,server,graph]"
+langstitch compile my_graph.langstitch.json --out my_graph-build --force
+cd my_graph-build
+pip install -e .
+python -m app
+langstitch run</pre></div>
+          <p>The compiler writes <code>application.yaml</code>, <code>env.yaml</code>, graph modules, and <code>.langstitch-build-manifest.json</code> (node ids + emitted files). IR node ids survive compilation and appear in logs and dev run events.</p>
+          <div class="docs-note tip">
+            <span class="docs-note-title">Spec &amp; conformance</span>
+            The IR schema, RunEvent protocol, and conformance fixtures live in the <code>langstitch-spec</code> repository. Unsupported node kinds fail at compile time with a clear error.
+          </div>
+        </section>
+
+        <section id="dev-run-events" class="docs-section">
+          <h2>Dev run events</h2>
+          <p>When debugging locally, enable the RunEvent SSE stream so LangTailor (or any dev client) can visualize graph execution. This is <strong>development-only</strong> — the endpoint is not mounted unless explicitly enabled.</p>
+          <div class="docs-code"><pre>export LANGSTITCH_DEV_EVENTS=1
+export LANGSTITCH_API_KEY=dev
+langstitch run
+# GET /runs/{run_id}/events  (localhost SSE; per-run seq numbers)</pre></div>
+          <p>LangTailor's Build and Run commands set these variables automatically in the integrated terminal. Production deployments should leave <code>LANGSTITCH_DEV_EVENTS</code> unset.</p>
+        </section>
+
         <section id="production" class="docs-section">
           <h2>Production</h2>
           <ul>
-            <li><strong>Precompile config.</strong> Run <code>langstitch compile</code> to turn <code>application.yaml</code> into <code>application.json</code>; when present, the JSON loads directly and takes precedence for fast, deterministic startup.</li>
+            <li><strong>Precompile config.</strong> Run <code>langstitch compile</code> with no document argument to turn <code>application.yaml</code> into <code>application.json</code>; when present, the JSON loads directly and takes precedence for fast, deterministic startup.</li>
+            <li><strong>Keep RunEvents off.</strong> Do not set <code>LANGSTITCH_DEV_EVENTS</code> in production — invoke paths stay lean when dev events are disabled.</li>
             <li><strong>Keep the core light.</strong> Install only the extras you need (<code>server,graph,llm,http</code>) so images stay small.</li>
             <li><strong>Secrets from the environment.</strong> Never inline credentials — provide them via the environment (or your orchestrator's secret store).</li>
             <li><strong>Pin versions.</strong> Pin <code>langstitch-sdk</code> and your provider packages in <code>pyproject.toml</code>.</li>
@@ -697,7 +726,7 @@ CMD ["langstitch", "run", "--host", "0.0.0.0", "--port", "8000"]</pre></div>
 langstitch info [--root PATH]                   load config + list components
 langstitch run [--root PATH] [--host] [--port]  start the API server
 langstitch register [--root PATH] [--describe-only]  LangSmith graph registration
-langstitch compile [--root PATH]                application.yaml -> application.json
+langstitch compile [document.langstitch.json] [--out DIR] [--force]  IR v2 -> Python project (or config precompile)
 langstitch get &lt;json.path&gt; [--root PATH]        resolve a config path, print as JSON
 langstitch version                              print the SDK version</pre></div>
 
@@ -709,7 +738,7 @@ langstitch version                              print the SDK version</pre></div
                 <tr><td><code>info</code></td><td>Load configuration and list every registered component.</td></tr>
                 <tr><td><code>run</code></td><td>Start the FastAPI server (requires the <code>server</code> extra).</td></tr>
                 <tr><td><code>register [--describe-only]</code></td><td>Register the entrypoint graph with LangSmith (requires the <code>tracing</code> extra). <code>--describe-only</code> skips LangGraph compile.</td></tr>
-                <tr><td><code>compile</code></td><td>Precompile <code>application.yaml</code> → <code>application.json</code>.</td></tr>
+                <tr><td><code>compile [document]</code></td><td>With a <code>*.langstitch.json</code> IR v2 document: emit a Python project to <code>--out</code> (requires <code>compiler</code> extra). Without a document: precompile <code>application.yaml</code> → <code>application.json</code>.</td></tr>
                 <tr><td><code>get</code></td><td>Resolve a JSON-path and print the result as JSON.</td></tr>
                 <tr><td><code>version</code></td><td>Print the installed SDK version.</td></tr>
               </tbody>
@@ -735,7 +764,8 @@ python -c "help('langstitch')"</pre></div>
                 <tr><td><code>ImportError</code> mentioning an extra</td><td>Install the extra it names, e.g. <code>pip install "langstitch-sdk[graph]"</code>.</td></tr>
                 <tr><td><code>langstitch run</code> not found / fails</td><td>Install the <code>server</code> extra: <code>pip install "langstitch-sdk[server]"</code>.</td></tr>
                 <tr><td>Secrets resolve to <code>None</code></td><td>Set them in the environment (or <code>env.yaml</code>); never inline them in code.</td></tr>
-                <tr><td>Slow startup in production</td><td>Run <code>langstitch compile</code> and ship <code>application.json</code>.</td></tr>
+                <tr><td>RunEvents not available in production</td><td>Expected — set <code>LANGSTITCH_DEV_EVENTS=1</code> only for local debugging.</td></tr>
+                <tr><td>Slow startup in production</td><td>Run <code>langstitch compile</code> (no document) and ship <code>application.json</code>.</td></tr>
               </tbody>
             </table>
           </div>
