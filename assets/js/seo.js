@@ -5,6 +5,8 @@
   var AUTHOR = "LangStitch";
   var EMAIL = "connect@langstitch.com";
   var PYPI_URL = "https://pypi.org/project/langstitch-sdk/";
+  var MAVEN_SPRING_AI_URL = "https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.1.0";
+  var GITHUB_SPRING_AI = "https://github.com/LangStitch/langstitch-spring-ai";
   var LANGTAILOR_URL = "https://langtailor.langstitch.com/";
   var PRODUCT_URL = "https://langstitch.com/";
   var MARKETPLACE_URL = "https://marketplace.langstitch.com/";
@@ -13,13 +15,14 @@
   var OPEN_VSX_URL = "https://open-vsx.org/extension/langstitch/langtailor-canvas";
   var OG_IMAGE = "https://langstitch.com/assets/og-card.svg";
   var VERSION = "0.3.0";
+  var SPRING_AI_VERSION = "0.1.0";
 
   var TITLE =
     "LangStitch SDK — IR v2 Compiler · Python Docs · Spring AI, Go & Rust";
   var DESCRIPTION =
-    "LangStitch SDK documentation — IR v2 compiler, langstitch compile CLI, dev RunEvents, decorators, typed YAML config. Python runtime on PyPI (pip install langstitch-sdk); Spring AI (Java), Go, and Rust expanding. LangTailor canvas export.";
+    "LangStitch SDK documentation — IR v2 compiler, langstitch compile CLI, dev RunEvents, decorators, typed YAML config. Python on PyPI (pip install langstitch-sdk); Spring AI IR compiler on Maven Central (com.langstitch:langstitch-spring-ai:0.1.0); Go and Rust expanding. LangTailor canvas export.";
   var KEYWORDS =
-    "LangStitch SDK, langstitch-sdk, IR v2, langstitch compile, RunEvents, LangGraph SDK, Python SDK, Spring AI agents, Go agents, Rust agents, multi-language export, PyPI, agent engineering, LangTailor export, pip install langstitch-sdk";
+    "LangStitch SDK, langstitch-sdk, IR v2, langstitch compile, RunEvents, LangGraph SDK, Python SDK, Spring AI agents, Maven Central, langstitch-spring-ai, Go agents, Rust agents, multi-language export, PyPI, agent engineering, LangTailor export, pip install langstitch-sdk";
 
   function upsertMeta(name, content, property) {
     if (!content) return;
@@ -105,7 +108,7 @@
         name: AUTHOR,
         url: PRODUCT_URL,
         email: EMAIL,
-        sameAs: [PYPI_URL, GITHUB_SDK, GITHUB_SPEC, LANGTAILOR_URL, OPEN_VSX_URL, MARKETPLACE_URL]
+        sameAs: [PYPI_URL, MAVEN_SPRING_AI_URL, GITHUB_SDK, GITHUB_SPRING_AI, GITHUB_SPEC, LANGTAILOR_URL, OPEN_VSX_URL, MARKETPLACE_URL]
       }
     },
     {
@@ -116,7 +119,7 @@
       applicationCategory: "DeveloperApplication",
       operatingSystem: "Windows, macOS, Linux",
       description:
-        "Python runtime of the LangStitch SDK — IR v2 compiler, langstitch compile CLI, dev RunEvents, decorators, YAML config, and LangGraph project scaffold. Spring AI, Go, and Rust runtimes share the same project structure.",
+        "Python runtime of the LangStitch SDK — IR v2 compiler, langstitch compile CLI, dev RunEvents, decorators, YAML config, and LangGraph project scaffold. Spring AI IR compiler on Maven Central; Go and Rust runtimes share the same project structure.",
       url: SITE_ORIGIN + "/",
       downloadUrl: PYPI_URL,
       installUrl: PYPI_URL,
@@ -127,8 +130,28 @@
         "Dev RunEvents SSE stream",
         "LangGraph decorators and typed config",
         "CLI init, compile, run",
-        "LangTailor canvas export compatibility"
+        "LangTailor canvas export compatibility",
+        "Spring AI IR compiler on Maven Central"
       ],
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@type": "Organization", name: AUTHOR, email: EMAIL },
+      license: "https://opensource.org/licenses/MIT"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "langstitch-spring-ai",
+      alternateName: "LangStitch Spring AI IR Compiler",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Windows, macOS, Linux",
+      description:
+        "Spring AI IR compiler for LangStitch — IR v2 to Spring Boot + Spring AI projects. Published on Maven Central as com.langstitch:langstitch-spring-ai.",
+      url: MAVEN_SPRING_AI_URL,
+      downloadUrl: MAVEN_SPRING_AI_URL,
+      installUrl: MAVEN_SPRING_AI_URL,
+      softwareVersion: SPRING_AI_VERSION,
+      programmingLanguage: "Java",
+      codeRepository: GITHUB_SPRING_AI,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       author: { "@type": "Organization", name: AUTHOR, email: EMAIL },
       license: "https://opensource.org/licenses/MIT"
@@ -153,7 +176,7 @@
           acceptedAnswer: {
             "@type": "Answer",
             text:
-              "Python is available now on PyPI as langstitch-sdk (v0.3.0). Spring AI (Java), Go, and Rust runtimes share the same project structure and LangTailor canvas export format; those language packages are expanding on the roadmap."
+              "Python is available now on PyPI as langstitch-sdk (v0.3.0). Spring AI IR compiler is available on Maven Central as com.langstitch:langstitch-spring-ai:0.1.0. Go and Rust runtimes share the same project structure and LangTailor canvas export format; those language packages are expanding on the roadmap."
           }
         },
         {
@@ -171,7 +194,7 @@
           acceptedAnswer: {
             "@type": "Answer",
             text:
-              "langstitch compile is the SDK CLI command that reads IR v2 documents (from LangTailor or langstitch-spec) and emits Python LangGraph project files. It is part of pip install langstitch-sdk and powers canvas-to-code export in LangTailor v0.3.0."
+              "langstitch compile is the SDK CLI command that reads IR v2 documents (from LangTailor or langstitch-spec) and emits Python LangGraph project files. It is part of pip install langstitch-sdk and powers canvas-to-code export in LangTailor v0.3.1."
           }
         },
         {
