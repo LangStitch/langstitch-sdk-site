@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LangStitch SDK — Python + Spring AI IR Compilers · Go &amp; Rust Expanding</title>
-  <meta name="description" content="LangStitch multi-language SDK — IR v2 compilers for Python (PyPI: langstitch-sdk) and Spring AI (Maven Central: com.langstitch:langstitch-spring-ai:0.1.0). Same canvas export, same project contracts. Go and Rust expanding." />
+  <meta name="description" content="LangStitch multi-language SDK — IR v2 compilers for Python (PyPI: langstitch-sdk) and Spring AI (Maven Central: com.langstitch:langstitch-spring-ai:0.2.0). Same canvas export, same project contracts. Go and Rust expanding." />
   <meta name="keywords" content="LangStitch SDK, langstitch-sdk, langstitch-spring-ai, IR v2, Maven Central, Spring AI, Python LangGraph, langstitch compile, RunEvents, multi-language export, PyPI, agent engineering, LangTailor" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="LangStitch" />
@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@LangStitch" />
   <meta name="twitter:title" content="LangStitch SDK · Python + Spring AI" />
-  <meta name="twitter:description" content="pip install langstitch-sdk · Maven com.langstitch:langstitch-spring-ai:0.1.0 · IR v2 · LangTailor export" />
+  <meta name="twitter:description" content="pip install langstitch-sdk · Maven com.langstitch:langstitch-spring-ai:0.2.0 · IR v2 · LangTailor export" />
   <meta name="twitter:image" content="https://langstitch.com/assets/og-card.svg" />
   <link rel="sitemap" type="application/xml" href="sitemap.xml" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css" />
@@ -50,7 +50,7 @@
       <a href="#python-runtime">Python</a>
       <a href="https://langtailor.langstitch.com">LangTailor</a>
       <a href="https://marketplace.langstitch.com">Marketplace</a>
-      <a class="nav-cta nav-cta--secondary" href="https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.1.0">Maven</a>
+      <a class="nav-cta nav-cta--secondary" href="https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.2.0">Maven</a>
       <a class="nav-cta" href="https://pypi.org/project/langstitch-sdk/">PyPI</a>
     </div>
   </nav>
@@ -115,7 +115,7 @@
             <p class="docs-hero-why">Pick the stack you ship in. Design once in <a href="https://langtailor.langstitch.com/">LangTailor</a>, compile with the matching IR compiler, run idiomatic Python LangGraph or Spring Boot + Spring AI.</p>
             <div class="docs-hero-tags">
               <span class="docs-tag docs-tag--live">Python 0.3.0 · PyPI</span>
-              <span class="docs-tag docs-tag--live">Spring AI 0.1.0 · Maven Central</span>
+              <span class="docs-tag docs-tag--live">Spring AI 0.2.0 · Maven Central</span>
               <span class="docs-tag">Go · expanding</span>
               <span class="docs-tag">Rust · expanding</span>
             </div>
@@ -136,7 +136,7 @@ langstitch compile graph.langstitch.json --out ./build --force</pre></div>
             </div>
             <div class="docs-runtime-path docs-runtime-path--live">
               <h3>Spring AI (Java)</h3>
-              <div class="docs-code"><pre>java -jar langstitch-spring-ai-0.1.0-all.jar \
+              <div class="docs-code"><pre>java -jar langstitch-spring-ai-0.2.0-all.jar \
   compile graph.langstitch.json --out ./build --force</pre></div>
               <a class="docs-lang__link" href="#spring-ai">Spring AI guide →</a>
             </div>
@@ -184,12 +184,12 @@ langstitch compile graph.langstitch.json --out ./build --force</pre></div>
             <article class="docs-lang docs-lang--live">
               <div class="docs-lang__head">
                 <h3>Spring AI (Java)</h3>
-                <span class="docs-lang__badge docs-lang__badge--live">Available · Maven Central 0.1.0</span>
+                <span class="docs-lang__badge docs-lang__badge--live">Available · Maven Central 0.2.0</span>
               </div>
               <p>IR v2 → Spring Boot + Spring AI Maven project. LLM, router, function, tool, response_transformer supported. Also exportable from LangTailor as <strong>Spring AI (Java)</strong>.</p>
-              <p class="docs-lang__install"><code>com.langstitch:langstitch-spring-ai:0.1.0</code></p>
+              <p class="docs-lang__install"><code>com.langstitch:langstitch-spring-ai:0.2.0</code></p>
               <a class="docs-lang__link" href="#spring-ai">Spring AI docs →</a>
-              <a class="docs-lang__link" href="https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.1.0">Maven Central →</a>
+              <a class="docs-lang__link" href="https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.2.0">Maven Central →</a>
             </article>
             <article class="docs-lang">
               <div class="docs-lang__head">
@@ -239,13 +239,13 @@ langstitch version</pre></div>
               <div class="docs-code"><pre>&lt;dependency&gt;
   &lt;groupId&gt;com.langstitch&lt;/groupId&gt;
   &lt;artifactId&gt;langstitch-spring-ai&lt;/artifactId&gt;
-  &lt;version&gt;0.1.0&lt;/version&gt;
+  &lt;version&gt;0.2.0&lt;/version&gt;
 &lt;/dependency&gt;</pre></div>
               <div class="docs-code"><pre># Runnable fat CLI (classifier: all)
 mvn -q org.apache.maven.plugins:maven-dependency-plugin:3.8.1:copy \
-  -Dartifact=com.langstitch:langstitch-spring-ai:0.1.0:jar:all \
+  -Dartifact=com.langstitch:langstitch-spring-ai:0.2.0:jar:all \
   -DoutputDirectory=.
-java -jar langstitch-spring-ai-0.1.0-all.jar version</pre></div>
+java -jar langstitch-spring-ai-0.2.0-all.jar version</pre></div>
               <a class="docs-lang__link" href="#spring-ai">Spring AI compile guide →</a>
             </div>
           </div>
@@ -255,13 +255,19 @@ java -jar langstitch-spring-ai-0.1.0-all.jar version</pre></div>
           <h2>Spring AI (Java)</h2>
           <p class="docs-section-lede">
             <code>langstitch-spring-ai</code> is the IR v2 compiler for Spring Boot + Spring AI.
-            Artifact: <a href="https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.1.0"><code>com.langstitch:langstitch-spring-ai:0.1.0</code></a>
+            Artifact: <a href="https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.2.0"><code>com.langstitch:langstitch-spring-ai:0.2.0</code></a>
             · Source: <a href="https://github.com/LangStitch/langstitch-spring-ai">GitHub</a>
             · LangTailor export format: <strong>Spring AI (Java)</strong>
           </p>
+          <div class="docs-note tip">
+            <span class="docs-note-title">Marketplace is language-agnostic</span>
+            Connectors, MCP packs, agents, and graphs sync as IR. Python vs Spring AI is chosen at compile time
+            (<code>langstitch compile</code> or <code>langstitch-spring-ai compile</code>) — not at acquire time.
+            Connector manifests ship <code>codegen.templates["python-langstitch"]</code> and <code>codegen.templates["spring-ai"]</code>.
+          </div>
 
           <h3 id="spring-ai-compile">Compile IR → Spring AI project</h3>
-          <div class="docs-code"><pre>java -jar langstitch-spring-ai-0.1.0-all.jar \
+          <div class="docs-code"><pre>java -jar langstitch-spring-ai-0.2.0-all.jar \
   compile my_graph.langstitch.json --out my_graph-spring --force
 
 cd my_graph-spring
@@ -273,8 +279,15 @@ langstitch-spring-ai capabilities
 langstitch-spring-ai version</pre></div>
           <p>LangTailor discovers the CLI via <code>PATH</code>, <code>LANGSTITCH_SPRING_AI_JAR</code>, or a sibling <code>*-all.jar</code>. If the Java CLI is unavailable, the canvas can still emit a Spring AI project via its TypeScript fallback exporter.</p>
 
+          <h3 id="spring-ai-install">Maven install</h3>
+          <div class="docs-code"><pre>&lt;dependency&gt;
+  &lt;groupId&gt;com.langstitch&lt;/groupId&gt;
+  &lt;artifactId&gt;langstitch-spring-ai&lt;/artifactId&gt;
+  &lt;version&gt;0.2.0&lt;/version&gt;
+&lt;/dependency&gt;</pre></div>
+
           <h3 id="spring-ai-layout">Generated project layout</h3>
-          <div class="docs-code"><pre>application.yaml
+          <div class="docs-code"><pre>application.yaml          # includes mcp.servers when IR has mcpServers
 env.yaml
 pom.xml
 .langstitch-build-manifest.json
@@ -283,24 +296,25 @@ src/main/java/com/langstitch/&lt;pkg&gt;/
   GraphState.java
   graph/MainGraph.java
   nodes/*.java
+  mcp/McpToolClient.java   # when logical.mcpServers is present
   config/AiConfig.java
   web/GraphController.java
 src/main/resources/application.yml</pre></div>
 
-          <h3 id="spring-ai-capabilities">Capability matrix</h3>
+          <h3 id="spring-ai-capabilities">Capability matrix (0.2.0)</h3>
           <div class="docs-table-wrap">
             <table>
-              <thead><tr><th>Node kind</th><th>Status</th></tr></thead>
+              <thead><tr><th>Area</th><th>Status</th></tr></thead>
               <tbody>
                 <tr><td><code>start</code>, <code>end</code>, <code>llm</code>, <code>tool</code>, <code>router</code>, <code>function</code>, <code>response_transformer</code></td><td>Supported</td></tr>
-                <tr><td><code>custom</code></td><td>Template-required (<code>codegen.templates["spring-ai"]</code>)</td></tr>
+                <tr><td>MCP (<code>logical.mcpServers</code> + tool <code>connectionType: mcp</code>)</td><td>Supported</td></tr>
+                <tr><td>LLM <code>boundToolIds</code></td><td>Supported (wired to MCP client when present)</td></tr>
+                <tr><td>Marketplace connectors (<code>custom</code> + <code>codegen.templates["spring-ai"]</code>)</td><td>Template-required</td></tr>
                 <tr><td><code>subgraph</code>, <code>agent</code>, <code>rag</code>, <code>intent_classifier</code>, <code>hitl</code></td><td>Unsupported (fail loudly)</td></tr>
+                <tr><td>Streaming / RunEvents</td><td>Supported</td></tr>
+                <tr><td>Reverse-sync / A2A / checkpointing</td><td>Planned / unsupported</td></tr>
               </tbody>
             </table>
-          </div>
-          <div class="docs-note tip">
-            <span class="docs-note-title">Features</span>
-            Streaming and RunEvents: supported. Checkpointing, MCP, A2A, reverse-sync: not yet — see <code>langstitch-spec/capabilities/spring-ai.json</code>.
           </div>
         </section>
 
@@ -768,7 +782,7 @@ cd my_graph-build &amp;&amp; pip install -e . &amp;&amp; langstitch run</pre></d
             </div>
             <div class="docs-runtime-path docs-runtime-path--live">
               <h3>Spring AI · <code>langstitch-spring-ai compile</code></h3>
-              <div class="docs-code"><pre>java -jar langstitch-spring-ai-0.1.0-all.jar \
+              <div class="docs-code"><pre>java -jar langstitch-spring-ai-0.2.0-all.jar \
   compile my_graph.langstitch.json --out my_graph-spring --force
 cd my_graph-spring &amp;&amp; mvn spring-boot:run</pre></div>
               <a class="docs-lang__link" href="#spring-ai">Full Spring AI guide →</a>
@@ -883,7 +897,7 @@ python -c "help('langstitch')"</pre></div>
           LangStitch SDK · MIT ·
           <a href="https://langstitch.com/">Home</a> ·
           <a href="https://pypi.org/project/langstitch-sdk/">PyPI</a> ·
-          <a href="https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.1.0">Maven Central</a> ·
+          <a href="https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.2.0">Maven Central</a> ·
           <a href="https://github.com/LangStitch/langstitch-sdk">Python GitHub</a> ·
           <a href="https://github.com/LangStitch/langstitch-spring-ai">Spring AI GitHub</a> ·
           <a href="https://langtailor.langstitch.com">LangTailor</a> ·

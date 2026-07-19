@@ -5,7 +5,7 @@
   var AUTHOR = "LangStitch";
   var EMAIL = "connect@langstitch.com";
   var PYPI_URL = "https://pypi.org/project/langstitch-sdk/";
-  var MAVEN_SPRING_AI_URL = "https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.1.0";
+  var MAVEN_SPRING_AI_URL = "https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.2.0";
   var GITHUB_SPRING_AI = "https://github.com/LangStitch/langstitch-spring-ai";
   var LANGTAILOR_URL = "https://langtailor.langstitch.com/";
   var PRODUCT_URL = "https://langstitch.com/";
@@ -15,12 +15,12 @@
   var OPEN_VSX_URL = "https://open-vsx.org/extension/langstitch/langtailor-canvas";
   var OG_IMAGE = "https://langstitch.com/assets/og-card.svg";
   var VERSION = "0.3.0";
-  var SPRING_AI_VERSION = "0.1.0";
+  var SPRING_AI_VERSION = "0.2.0";
 
   var TITLE =
     "LangStitch SDK — Python + Spring AI IR Compilers · Go & Rust Expanding";
   var DESCRIPTION =
-    "LangStitch multi-language SDK — IR v2 compilers for Python (PyPI: langstitch-sdk) and Spring AI (Maven Central: com.langstitch:langstitch-spring-ai:0.1.0). Same canvas export, same project contracts. Go and Rust expanding.";
+    "LangStitch multi-language SDK — IR v2 compilers for Python (PyPI: langstitch-sdk) and Spring AI (Maven Central: com.langstitch:langstitch-spring-ai:0.2.0). Same canvas export, same project contracts. Go and Rust expanding.";
   var KEYWORDS =
     "LangStitch SDK, langstitch-sdk, langstitch-spring-ai, IR v2, Maven Central, Spring AI, Python LangGraph, langstitch compile, RunEvents, multi-language export, PyPI, agent engineering, LangTailor";
 
@@ -176,7 +176,7 @@
           acceptedAnswer: {
             "@type": "Answer",
             text:
-              "Python is available now on PyPI as langstitch-sdk (v0.3.0). Spring AI IR compiler is available on Maven Central as com.langstitch:langstitch-spring-ai:0.1.0. Go and Rust runtimes share the same project structure and LangTailor canvas export format; those language packages are expanding on the roadmap."
+              "Python is available now on PyPI as langstitch-sdk (v0.3.0). Spring AI IR compiler is available on Maven Central as com.langstitch:langstitch-spring-ai:0.2.0. Go and Rust runtimes share the same project structure and LangTailor canvas export format; those language packages are expanding on the roadmap."
           }
         },
         {
