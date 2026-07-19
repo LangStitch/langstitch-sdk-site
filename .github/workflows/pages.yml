@@ -28,7 +28,9 @@ jobs:
       - name: Verify built site
         run: |
           grep -q 'language-targets' _site/index.html
-          grep -Fq 'sdk-docs.css?v=7' _site/index.html
+          grep -q 'sdk-docs.css?v=' _site/index.html
+          grep -q 'spring-ai' _site/index.html
+          grep -Fq 'com.langstitch:langstitch-spring-ai' _site/index.html
           test -f _site/sitemap.xml
           test -f _site/robots.txt
 

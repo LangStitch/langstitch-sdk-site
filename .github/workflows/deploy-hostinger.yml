@@ -60,7 +60,10 @@ jobs:
           URL="https://sdk.langstitch.com/"
           for i in 1 2 3 4 5 6; do
             BODY="$(curl -fsSL --compressed -H "Cache-Control: no-cache" "$URL" || true)"
-            if echo "$BODY" | grep -q 'language-targets' && echo "$BODY" | grep -Fq 'sdk-docs.css?v=7'; then
+            if echo "$BODY" | grep -q 'language-targets' \
+              && echo "$BODY" | grep -q 'sdk-docs.css?v=' \
+              && echo "$BODY" | grep -q 'spring-ai' \
+              && echo "$BODY" | grep -Fq 'com.langstitch:langstitch-spring-ai'; then
               echo "Live SDK site OK (attempt $i)."
               exit 0
             fi
