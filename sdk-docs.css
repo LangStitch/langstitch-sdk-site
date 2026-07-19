@@ -789,4 +789,61 @@ code {
   font-size: 11px;
   font-weight: 600;
   color: var(--signal);
+  margin-right: 12px;
+}
+
+.docs-runtime-paths {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 18px 0 22px;
+}
+
+.docs-runtime-path {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  opacity: 0.8;
+}
+
+.docs-runtime-path--live {
+  opacity: 1;
+  border-color: var(--signal-border);
+  box-shadow: inset 0 2px 0 var(--signal);
+}
+
+.docs-runtime-path h3 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  letter-spacing: -0.02em;
+}
+
+.docs-runtime-path ul {
+  margin: 0 0 10px;
+  padding-left: 18px;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.docs-runtime-path .docs-code {
+  margin: 0 0 10px;
+}
+
+.docs-runtime-path p {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.nav-cta--secondary {
+  background: transparent;
+  border: 1px solid var(--signal-border);
+  color: var(--signal);
+}
+
+@media (max-width: 860px) {
+  .docs-runtime-paths {
+    grid-template-columns: 1fr;
+  }
 }

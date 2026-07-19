@@ -18,11 +18,11 @@
   var SPRING_AI_VERSION = "0.1.0";
 
   var TITLE =
-    "LangStitch SDK — IR v2 Compiler · Python Docs · Spring AI, Go & Rust";
+    "LangStitch SDK — Python + Spring AI IR Compilers · Go & Rust Expanding";
   var DESCRIPTION =
-    "LangStitch SDK documentation — IR v2 compiler, langstitch compile CLI, dev RunEvents, decorators, typed YAML config. Python on PyPI (pip install langstitch-sdk); Spring AI IR compiler on Maven Central (com.langstitch:langstitch-spring-ai:0.1.0); Go and Rust expanding. LangTailor canvas export.";
+    "LangStitch multi-language SDK — IR v2 compilers for Python (PyPI: langstitch-sdk) and Spring AI (Maven Central: com.langstitch:langstitch-spring-ai:0.1.0). Same canvas export, same project contracts. Go and Rust expanding.";
   var KEYWORDS =
-    "LangStitch SDK, langstitch-sdk, IR v2, langstitch compile, RunEvents, LangGraph SDK, Python SDK, Spring AI agents, Maven Central, langstitch-spring-ai, Go agents, Rust agents, multi-language export, PyPI, agent engineering, LangTailor export, pip install langstitch-sdk";
+    "LangStitch SDK, langstitch-sdk, langstitch-spring-ai, IR v2, Maven Central, Spring AI, Python LangGraph, langstitch compile, RunEvents, multi-language export, PyPI, agent engineering, LangTailor";
 
   function upsertMeta(name, content, property) {
     if (!content) return;
@@ -86,7 +86,7 @@
   upsertMeta("og:image:type", "image/svg+xml", true);
   upsertMeta("og:image:width", "1200", true);
   upsertMeta("og:image:height", "630", true);
-  upsertMeta("og:image:alt", "LangStitch SDK — IR v2 compiler and Python LangGraph runtime", true);
+  upsertMeta("og:image:alt", "LangStitch SDK — Python and Spring AI IR compilers", true);
   upsertMeta("twitter:card", "summary_large_image");
   upsertMeta("twitter:site", TWITTER);
   upsertMeta("twitter:title", TITLE);
@@ -185,7 +185,7 @@
           acceptedAnswer: {
             "@type": "Answer",
             text:
-              "LangTailor is the visual IDE that designs LangGraph workflows on an IR v2 canvas and exports projects using langstitch-sdk conventions. Design in LangTailor, compile with langstitch compile, and run Python LangGraph apps with the same graphs/, skills/, and guardrails/ layout."
+              "LangTailor is the visual IDE that designs workflows on an IR v2 canvas and exports Python (langstitch-sdk) or Spring AI (langstitch-spring-ai) projects. Design once, compile with the matching IR compiler, and keep the same application.yaml contracts."
           }
         },
         {

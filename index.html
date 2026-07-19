@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LangStitch SDK — IR v2 Compiler · Python Docs · Spring AI, Go &amp; Rust</title>
-  <meta name="description" content="LangStitch SDK documentation — IR v2 compiler, langstitch compile CLI, dev RunEvents, decorators, typed YAML config. Python on PyPI (pip install langstitch-sdk); Spring AI IR compiler on Maven Central (com.langstitch:langstitch-spring-ai:0.1.0); Go and Rust expanding. LangTailor canvas export." />
-  <meta name="keywords" content="LangStitch SDK, langstitch-sdk, IR v2, langstitch compile, RunEvents, LangGraph SDK, Python SDK, Spring AI agents, Go agents, Rust agents, multi-language export, PyPI, agent engineering, LangTailor export, pip install langstitch-sdk" />
+  <title>LangStitch SDK — Python + Spring AI IR Compilers · Go &amp; Rust Expanding</title>
+  <meta name="description" content="LangStitch multi-language SDK — IR v2 compilers for Python (PyPI: langstitch-sdk) and Spring AI (Maven Central: com.langstitch:langstitch-spring-ai:0.1.0). Same canvas export, same project contracts. Go and Rust expanding." />
+  <meta name="keywords" content="LangStitch SDK, langstitch-sdk, langstitch-spring-ai, IR v2, Maven Central, Spring AI, Python LangGraph, langstitch compile, RunEvents, multi-language export, PyPI, agent engineering, LangTailor" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="LangStitch" />
   <meta name="theme-color" content="#00e5a0" />
@@ -15,19 +15,19 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="LangStitch" />
   <meta property="og:url" content="https://sdk.langstitch.com/" />
-  <meta property="og:title" content="LangStitch SDK — IR v2 Compiler · Python, Spring AI, Go &amp; Rust" />
-  <meta property="og:description" content="IR v2 compiler · langstitch compile CLI · RunEvents · Python on PyPI and Spring AI on Maven Central; Go and Rust expanding · Same canvas, same project structure." />
+  <meta property="og:title" content="LangStitch SDK — Python + Spring AI IR Compilers" />
+  <meta property="og:description" content="Two shipping IR compilers: Python on PyPI and Spring AI on Maven Central. Same IR v2 canvas export. Go and Rust expanding." />
   <meta property="og:image" content="https://langstitch.com/assets/og-card.svg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@LangStitch" />
-  <meta name="twitter:title" content="LangStitch SDK · IR v2 compiler &amp; Python runtime" />
-  <meta name="twitter:description" content="pip install langstitch-sdk · langstitch compile · RunEvents · Python on PyPI and Spring AI on Maven Central; Go and Rust expanding" />
+  <meta name="twitter:title" content="LangStitch SDK · Python + Spring AI" />
+  <meta name="twitter:description" content="pip install langstitch-sdk · Maven com.langstitch:langstitch-spring-ai:0.1.0 · IR v2 · LangTailor export" />
   <meta name="twitter:image" content="https://langstitch.com/assets/og-card.svg" />
   <link rel="sitemap" type="application/xml" href="sitemap.xml" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.min.css" />
   <script src="assets/js/seo.js" defer></script>
-  <link rel="stylesheet" href="sdk-docs.css?v=7" />
+  <link rel="stylesheet" href="sdk-docs.css?v=8" />
   <link rel="stylesheet" href="assets/css/analytics.css" />
 </head>
 <body>
@@ -44,11 +44,13 @@
     <label for="nav-toggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
     <div class="nav-links">
       <a href="https://langstitch.com/">Home</a>
-      <a href="#language-targets">Languages</a>
+      <a href="#language-targets">Runtimes</a>
       <a href="#installation">Install</a>
-      <a href="#quickstart">Quickstart</a>
+      <a href="#spring-ai">Spring AI</a>
+      <a href="#python-runtime">Python</a>
       <a href="https://langtailor.langstitch.com">LangTailor</a>
       <a href="https://marketplace.langstitch.com">Marketplace</a>
+      <a class="nav-cta nav-cta--secondary" href="https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.1.0">Maven</a>
       <a class="nav-cta" href="https://pypi.org/project/langstitch-sdk/">PyPI</a>
     </div>
   </nav>
@@ -60,14 +62,24 @@
       <div class="docs-sidebar-group">
         <p class="docs-sidebar-title">Getting started</p>
         <a href="#introduction">Introduction</a>
-        <a href="#language-targets">Language targets</a>
-        <a href="#installation">Installation</a>
+        <a href="#language-targets">Runtimes</a>
+        <a href="#installation">Install (both)</a>
+        <a href="#ir-compiler">IR compilers</a>
+      </div>
+      <div class="docs-sidebar-group">
+        <p class="docs-sidebar-title">Spring AI (Java)</p>
+        <a href="#spring-ai">Overview</a>
+        <a href="#spring-ai-install">Maven install</a>
+        <a href="#spring-ai-compile">Compile IR → project</a>
+        <a href="#spring-ai-layout">Generated layout</a>
+        <a href="#spring-ai-capabilities">Capabilities</a>
+      </div>
+      <div class="docs-sidebar-group">
+        <p class="docs-sidebar-title">Python runtime</p>
+        <a href="#python-runtime">Overview</a>
         <a href="#quickstart">Quickstart</a>
         <a href="#first-project">Your first project</a>
         <a href="#project-structure">Project structure</a>
-      </div>
-      <div class="docs-sidebar-group">
-        <p class="docs-sidebar-title">Core concepts</p>
         <a href="#decorators">Decorators</a>
         <a href="#configuration">Configuration</a>
         <a href="#graphs-nodes">Graphs &amp; nodes</a>
@@ -79,17 +91,10 @@
         <a href="#external-services">External services</a>
         <a href="#guardrails">Guardrails &amp; policies</a>
         <a href="#mcp">MCP servers</a>
-      </div>
-      <div class="docs-sidebar-group">
-        <p class="docs-sidebar-title">Guides</p>
         <a href="#build-run">Build &amp; run</a>
-        <a href="#ir-compiler">IR compiler</a>
         <a href="#dev-run-events">Dev run events</a>
         <a href="#production">Production</a>
         <a href="#deployment">Deployment</a>
-      </div>
-      <div class="docs-sidebar-group">
-        <p class="docs-sidebar-title">Reference</p>
         <a href="#cli">CLI</a>
         <a href="#api">API</a>
         <a href="#troubleshooting">Troubleshooting</a>
@@ -105,127 +110,208 @@
               <button class="docs-contents-btn" type="button" aria-expanded="false" aria-controls="docs-sidebar" aria-label="Open documentation contents">Contents</button>
               <p class="docs-eyebrow">LangStitch SDK</p>
             </div>
-            <h1>Agent engineering SDK for Python, Spring AI, Go &amp; Rust</h1>
-            <p>One project structure, one YAML config model, one canvas export format across languages. <strong>Python ships today</strong> on PyPI as <code>langstitch-sdk</code>; <strong>Spring AI is available now</strong> on Maven Central; Go and Rust runtimes are expanding on the same conventions.</p>
-            <p class="docs-hero-why">Why not raw LangGraph? Decorators, typed YAML, CLI scaffolding, multi-agent / A2A / HITL helpers, and a FastAPI server — without hand-wiring registries and servers yourself.</p>
+            <h1>Multi-language agent SDK — two IR compilers shipping</h1>
+            <p>One IR v2 contract, one canvas export, two runtimes you can install today: <strong>Python</strong> on PyPI (<code>langstitch-sdk</code>) and <strong>Spring AI</strong> on Maven Central (<code>com.langstitch:langstitch-spring-ai</code>). Go and Rust share the same layout and are expanding.</p>
+            <p class="docs-hero-why">Pick the stack you ship in. Design once in <a href="https://langtailor.langstitch.com/">LangTailor</a>, compile with the matching IR compiler, run idiomatic Python LangGraph or Spring Boot + Spring AI.</p>
             <div class="docs-hero-tags">
-              <span class="docs-tag docs-tag--live">0.2.0 · PyPI</span>
-              <span class="docs-tag docs-tag--live">Python · ships today</span>
-              <span class="docs-tag docs-tag--live">Spring AI · Maven Central</span>
+              <span class="docs-tag docs-tag--live">Python 0.3.0 · PyPI</span>
+              <span class="docs-tag docs-tag--live">Spring AI 0.1.0 · Maven Central</span>
               <span class="docs-tag">Go · expanding</span>
               <span class="docs-tag">Rust · expanding</span>
             </div>
             <div class="docs-hero-actions">
-              <a class="docs-btn docs-btn-primary" href="#language-targets">Language targets</a>
-              <a class="docs-btn" href="#installation">Python install</a>
-              <a class="docs-btn" href="https://pypi.org/project/langstitch-sdk/">View on PyPI</a>
+              <a class="docs-btn docs-btn-primary" href="#spring-ai">Spring AI docs</a>
+              <a class="docs-btn docs-btn-primary" href="#python-runtime">Python docs</a>
+              <a class="docs-btn" href="#installation">Install both</a>
+              <a class="docs-btn" href="https://langtailor.langstitch.com/">LangTailor</a>
             </div>
           </div>
 
-          <div class="docs-code"><pre># Python (available now)
-pip install langstitch-sdk
-pip install "langstitch-sdk[all]"
-
-# LangTailor exports Python and Spring AI projects today;
-# Go &amp; Rust targets are expanding.</pre></div>
+          <div class="docs-runtime-paths">
+            <div class="docs-runtime-path docs-runtime-path--live">
+              <h3>Python</h3>
+              <div class="docs-code"><pre>pip install "langstitch-sdk[compiler,server,graph]"
+langstitch compile graph.langstitch.json --out ./build --force</pre></div>
+              <a class="docs-lang__link" href="#python-runtime">Python runtime guide →</a>
+            </div>
+            <div class="docs-runtime-path docs-runtime-path--live">
+              <h3>Spring AI (Java)</h3>
+              <div class="docs-code"><pre>java -jar langstitch-spring-ai-0.1.0-all.jar \
+  compile graph.langstitch.json --out ./build --force</pre></div>
+              <a class="docs-lang__link" href="#spring-ai">Spring AI guide →</a>
+            </div>
+          </div>
 
           <h2>What you get</h2>
           <div class="docs-cards">
-            <div class="docs-card"><h4>Multi-language positioning</h4><p>Design once on the canvas; LangTailor exports the same <code>graphs/</code>, skills, guardrails, and deploy layout. <strong>Python is production-ready</strong> on PyPI; <strong>Spring AI IR compiler ships on Maven Central</strong>; Go and Rust targets share the export tree and are expanding.</p></div>
-            <div class="docs-card"><h4>Decorators</h4><p>Register nodes, graphs, skills, tools, agents, supervisors, guardrails, policies, personas, MCP, and A2A primitives with one decorator each (Python runtime today).</p></div>
-            <div class="docs-card"><h4>Typed YAML config</h4><p>Drive the app from <code>application.yaml</code>, read values with <code>load_config</code> / <code>get_config</code>, and bind typed sections to dataclasses — portable across language targets.</p></div>
-            <div class="docs-card"><h4>Graphs &amp; nodes</h4><p>Wire nodes and subgraphs with <code>GraphBuilder</code> and compile to a real LangGraph <code>StateGraph</code> in Python; other runtimes mirror the same graph semantics.</p></div>
-            <div class="docs-card"><h4>CLI</h4><p>The <code>langstitch</code> command scaffolds a clean multi-module project, runs your graph, and registers with LangSmith (Python CLI today).</p></div>
-            <div class="docs-card"><h4>Canvas round-trip</h4><p>The same scaffold LangTailor exports — design visually, then drop into code. Python and Spring AI ship today; adopt Go or Rust as those runtimes mature.</p></div>
+            <div class="docs-card"><h4>Two IR compilers</h4><p><code>langstitch compile</code> (Python) and <code>langstitch-spring-ai compile</code> (Java) both read the same <code>*.langstitch.json</code> IR and emit runnable projects for their stack.</p></div>
+            <div class="docs-card"><h4>Shared contracts</h4><p><code>application.yaml</code>, graph semantics, skills/guardrails layout, and LangTailor canvas export stay aligned across languages.</p></div>
+            <div class="docs-card"><h4>Python runtime</h4><p>Decorators, typed YAML, <code>GraphBuilder</code> → LangGraph, MCP, A2A, HITL, FastAPI server, and the <code>langstitch</code> CLI.</p></div>
+            <div class="docs-card"><h4>Spring AI runtime</h4><p>IR → Spring Boot 3.4 + Spring AI Maven project with graph controller, node classes, and AI config — via Maven Central or LangTailor Spring AI export.</p></div>
+            <div class="docs-card"><h4>Canvas round-trip</h4><p>Design in LangTailor, export Python or Spring AI, keep iterating in code. Go and Rust follow as those compilers land.</p></div>
+            <div class="docs-card"><h4>Capability honesty</h4><p>Each runtime publishes a capability matrix — unsupported node kinds fail loudly at compile time instead of generating broken stubs.</p></div>
           </div>
 
           <h2>Design principles</h2>
           <ul>
             <li><strong>Language-agnostic contracts.</strong> Graphs, skills, guardrails, and <code>application.yaml</code> describe behavior once; each runtime implements the same structure in idiomatic code.</li>
-            <li><strong>Light core.</strong> The Python package never imports FastAPI, LangGraph, LangChain, or httpx at import time. Heavy libraries are opt-in extras with clear install hints.</li>
-            <li><strong>Convention over configuration.</strong> A scaffolded project gives every concept its own package, and a single <code>import app</code> wires the whole application by registering decorators at import time.</li>
-            <li><strong>Declarative first.</strong> Behavior lives in YAML + decorated functions, so the same description powers the SDK, the LangTailor IDE, and multi-language codegen.</li>
+            <li><strong>Compiler per runtime.</strong> Python and Spring AI each ship a first-class IR compiler — not a thin wrapper around the other language.</li>
+            <li><strong>Convention over configuration.</strong> Scaffolded / compiled projects give every concept a clear package layout so imports and codegen stay predictable.</li>
+            <li><strong>Declarative first.</strong> Behavior lives in IR + YAML (+ idiomatic code), so the same description powers the SDK, LangTailor, and multi-language codegen.</li>
           </ul>
 
           <div class="docs-note tip">
             <span class="docs-note-title">LangStitch vs LangTailor</span>
-            <strong>LangStitch SDK</strong> is the code-first runtime family documented here. <a href="https://langtailor.langstitch.com/">LangTailor</a> is the downloadable IDE that designs the same graphs visually and exports projects on these SDK conventions — Python on PyPI and Spring AI on Maven Central; Go and Rust expanding.
+            <strong>LangStitch SDK</strong> is the multi-language runtime + IR compiler family. <a href="https://langtailor.langstitch.com/">LangTailor</a> is the IDE that designs graphs visually and exports Python or Spring AI projects on these contracts.
           </div>
         </section>
 
         <section id="language-targets" class="docs-section">
-          <h2>Language targets</h2>
-          <p>One agent engineering discipline — pick the runtime that fits your stack. Python is production-ready on PyPI; Spring AI IR compiler is on Maven Central; Go and Rust follow the same project layout LangTailor exports from the canvas.</p>
+          <h2>Runtimes</h2>
+          <p>Pick the runtime that matches your stack. Both shipping compilers consume the same IR v2 documents LangTailor saves from the canvas.</p>
 
           <div class="docs-lang-grid">
             <article class="docs-lang docs-lang--live">
               <div class="docs-lang__head">
                 <h3>Python</h3>
-                <span class="docs-lang__badge docs-lang__badge--live">Available · PyPI</span>
+                <span class="docs-lang__badge docs-lang__badge--live">Available · PyPI 0.3.0</span>
               </div>
-              <p>Decorators, typed YAML, <code>GraphBuilder</code>, MCP, guardrails, and the <code>langstitch</code> CLI. Python 3.10–3.13, tested in CI.</p>
+              <p>Full runtime: decorators, typed YAML, LangGraph, MCP, guardrails, A2A, and <code>langstitch</code> CLI + IR compiler.</p>
               <p class="docs-lang__install"><code>pip install langstitch-sdk</code></p>
-              <a class="docs-lang__link" href="#installation">Installation guide →</a>
+              <a class="docs-lang__link" href="#python-runtime">Python docs →</a>
+              <a class="docs-lang__link" href="https://pypi.org/project/langstitch-sdk/">PyPI →</a>
             </article>
             <article class="docs-lang docs-lang--live">
               <div class="docs-lang__head">
                 <h3>Spring AI (Java)</h3>
-                <span class="docs-lang__badge docs-lang__badge--live">Available · Maven Central</span>
+                <span class="docs-lang__badge docs-lang__badge--live">Available · Maven Central 0.1.0</span>
               </div>
-              <p>IR v2 → Spring Boot + Spring AI via the <code>langstitch-spring-ai</code> IR compiler on Maven Central (and LangTailor export). Capability matrix covers LLM, router, function, tool, and transformer nodes; reverse-sync and advanced kinds continue to expand.</p>
-              <p class="docs-lang__install"><code>&lt;dependency&gt;
-  &lt;groupId&gt;com.langstitch&lt;/groupId&gt;
-  &lt;artifactId&gt;langstitch-spring-ai&lt;/artifactId&gt;
-  &lt;version&gt;0.1.0&lt;/version&gt;
-&lt;/dependency&gt;</code></p>
+              <p>IR v2 → Spring Boot + Spring AI Maven project. LLM, router, function, tool, response_transformer supported. Also exportable from LangTailor as <strong>Spring AI (Java)</strong>.</p>
+              <p class="docs-lang__install"><code>com.langstitch:langstitch-spring-ai:0.1.0</code></p>
+              <a class="docs-lang__link" href="#spring-ai">Spring AI docs →</a>
               <a class="docs-lang__link" href="https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.1.0">Maven Central →</a>
-              <a class="docs-lang__link" href="https://github.com/LangStitch/langstitch-spring-ai">GitHub →</a>
             </article>
             <article class="docs-lang">
               <div class="docs-lang__head">
                 <h3>Go</h3>
                 <span class="docs-lang__badge">Expanding</span>
               </div>
-              <p>Idiomatic Go modules for building and serving LangStitch graphs with the same <code>graphs/</code> and config layout as Python exports.</p>
+              <p>Same IR + project conventions as Python/Spring AI exports. Compiler and modules on the roadmap.</p>
             </article>
             <article class="docs-lang">
               <div class="docs-lang__head">
                 <h3>Rust</h3>
                 <span class="docs-lang__badge">Expanding</span>
               </div>
-              <p>Typed, async-first crates for high-performance agent runtimes — same canvas round-trip and Helm-ready deploy bundles.</p>
+              <p>Same canvas round-trip target. Crates and IR compiler expanding on the shared layout.</p>
             </article>
           </div>
 
           <div class="docs-note">
             <span class="docs-note-title">Visual export path</span>
-            Prefer canvas-first? <a href="https://langtailor.langstitch.com/">LangTailor</a> exports a multi-language project tree in one click — <strong>Python on PyPI and Spring AI on Maven Central</strong>; Go and Rust share the export layout and are expanding.
+            <a href="https://langtailor.langstitch.com/">LangTailor</a> exports <strong>Python</strong> or <strong>Spring AI (Java)</strong> today from the same IR document. Go and Rust share the export tree as those compilers land.
           </div>
         </section>
 
         <section id="installation" class="docs-section">
-          <h2>Installation</h2>
-          <p class="docs-section-lede">The sections below document the <strong>Python runtime</strong> (<code>langstitch-sdk</code> on PyPI). The Spring AI IR compiler (<code>com.langstitch:langstitch-spring-ai:0.1.0</code>) is on Maven Central; Go and Rust SDK packages will publish to Go modules and crates.io as those runtimes mature.</p>
-          <h3>Requirements</h3>
-          <ul>
-            <li><strong>Python 3.10–3.13</strong> — tested on all four in CI. The core has a single runtime dependency (<code>PyYAML</code>); heavy libraries are opt-in extras.</li>
-            <li><strong>A packaging tool</strong> — pip, uv, or poetry. Always install into a virtual environment (<code>python -m venv .venv</code>).</li>
-            <li><strong>Model credentials</strong> — e.g. <code>OPENAI_API_KEY</code> — only if you call a real LLM. Provide them through the environment, never in code.</li>
-          </ul>
+          <h2>Install</h2>
+          <p class="docs-section-lede">Two packages, two package managers — install the runtime you need (or both).</p>
 
-          <h3>Install</h3>
-          <div class="docs-code"><pre>pip install langstitch-sdk                               # core only
-pip install "langstitch-sdk[server,graph,llm,http]"      # typical agent service
-pip install "langstitch-sdk[all]"                        # everything</pre></div>
+          <div class="docs-runtime-paths">
+            <div class="docs-runtime-path docs-runtime-path--live" id="install-python">
+              <h3>Python · PyPI</h3>
+              <ul>
+                <li>Python 3.10–3.13</li>
+                <li>pip / uv / poetry in a venv</li>
+              </ul>
+              <div class="docs-code"><pre>pip install langstitch-sdk
+pip install "langstitch-sdk[compiler,server,graph,llm,http]"
+langstitch version</pre></div>
+              <p>Or in <code>pyproject.toml</code>: <code>langstitch-sdk&gt;=0.3.0</code></p>
+              <a class="docs-lang__link" href="#python-runtime">Python extras &amp; runtime →</a>
+            </div>
+            <div class="docs-runtime-path docs-runtime-path--live" id="spring-ai-install">
+              <h3>Spring AI · Maven Central</h3>
+              <ul>
+                <li>Java 21+</li>
+                <li>Maven 3.9+</li>
+              </ul>
+              <div class="docs-code"><pre>&lt;dependency&gt;
+  &lt;groupId&gt;com.langstitch&lt;/groupId&gt;
+  &lt;artifactId&gt;langstitch-spring-ai&lt;/artifactId&gt;
+  &lt;version&gt;0.1.0&lt;/version&gt;
+&lt;/dependency&gt;</pre></div>
+              <div class="docs-code"><pre># Runnable fat CLI (classifier: all)
+mvn -q org.apache.maven.plugins:maven-dependency-plugin:3.8.1:copy \
+  -Dartifact=com.langstitch:langstitch-spring-ai:0.1.0:jar:all \
+  -DoutputDirectory=.
+java -jar langstitch-spring-ai-0.1.0-all.jar version</pre></div>
+              <a class="docs-lang__link" href="#spring-ai">Spring AI compile guide →</a>
+            </div>
+          </div>
+        </section>
 
-          <p>In your <code>pyproject.toml</code>:</p>
-          <div class="docs-code"><pre>[project]
-dependencies = [
-  "langstitch-sdk>=0.3.0",
-  # extras: "langstitch-sdk[server,graph,llm,http,compiler]>=0.3.0"
-]</pre></div>
+        <section id="spring-ai" class="docs-section">
+          <h2>Spring AI (Java)</h2>
+          <p class="docs-section-lede">
+            <code>langstitch-spring-ai</code> is the IR v2 compiler for Spring Boot + Spring AI.
+            Artifact: <a href="https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.1.0"><code>com.langstitch:langstitch-spring-ai:0.1.0</code></a>
+            · Source: <a href="https://github.com/LangStitch/langstitch-spring-ai">GitHub</a>
+            · LangTailor export format: <strong>Spring AI (Java)</strong>
+          </p>
 
-          <h3>Extras</h3>
+          <h3 id="spring-ai-compile">Compile IR → Spring AI project</h3>
+          <div class="docs-code"><pre>java -jar langstitch-spring-ai-0.1.0-all.jar \
+  compile my_graph.langstitch.json --out my_graph-spring --force
+
+cd my_graph-spring
+mvn -q test
+mvn -q spring-boot:run</pre></div>
+          <p>CLI protocol (same shape as other LangStitch compilers):</p>
+          <div class="docs-code"><pre>langstitch-spring-ai compile &lt;document.langstitch.json&gt; --out &lt;dir&gt; [--force]
+langstitch-spring-ai capabilities
+langstitch-spring-ai version</pre></div>
+          <p>LangTailor discovers the CLI via <code>PATH</code>, <code>LANGSTITCH_SPRING_AI_JAR</code>, or a sibling <code>*-all.jar</code>. If the Java CLI is unavailable, the canvas can still emit a Spring AI project via its TypeScript fallback exporter.</p>
+
+          <h3 id="spring-ai-layout">Generated project layout</h3>
+          <div class="docs-code"><pre>application.yaml
+env.yaml
+pom.xml
+.langstitch-build-manifest.json
+src/main/java/com/langstitch/&lt;pkg&gt;/
+  Application.java
+  GraphState.java
+  graph/MainGraph.java
+  nodes/*.java
+  config/AiConfig.java
+  web/GraphController.java
+src/main/resources/application.yml</pre></div>
+
+          <h3 id="spring-ai-capabilities">Capability matrix</h3>
+          <div class="docs-table-wrap">
+            <table>
+              <thead><tr><th>Node kind</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td><code>start</code>, <code>end</code>, <code>llm</code>, <code>tool</code>, <code>router</code>, <code>function</code>, <code>response_transformer</code></td><td>Supported</td></tr>
+                <tr><td><code>custom</code></td><td>Template-required (<code>codegen.templates["spring-ai"]</code>)</td></tr>
+                <tr><td><code>subgraph</code>, <code>agent</code>, <code>rag</code>, <code>intent_classifier</code>, <code>hitl</code></td><td>Unsupported (fail loudly)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="docs-note tip">
+            <span class="docs-note-title">Features</span>
+            Streaming and RunEvents: supported. Checkpointing, MCP, A2A, reverse-sync: not yet — see <code>langstitch-spec/capabilities/spring-ai.json</code>.
+          </div>
+        </section>
+
+        <section id="python-runtime" class="docs-section">
+          <h2>Python runtime</h2>
+          <p class="docs-section-lede">
+            Everything below documents the <strong>Python</strong> package <code>langstitch-sdk</code> on PyPI — decorators, LangGraph runtime, FastAPI server, and <code>langstitch</code> CLI.
+            For Spring AI, see <a href="#spring-ai">Spring AI (Java)</a>.
+          </p>
+
+          <h3>Python extras</h3>
           <div class="docs-table-wrap">
             <table>
               <thead><tr><th>Extra</th><th>Pulls in</th><th>Enables</th></tr></thead>
@@ -236,24 +322,20 @@ dependencies = [
                 <tr><td><code>llm</code></td><td>langchain</td><td><code>get_llm_provider()</code> (+ a provider, e.g. <code>langchain-openai</code>)</td></tr>
                 <tr><td><code>http</code></td><td>httpx</td><td><code>get_http_client()</code> / external services</td></tr>
                 <tr><td><code>tracing</code></td><td>langsmith</td><td><code>configure_tracing()</code>, <code>register_graph</code>, <code>langstitch register</code></td></tr>
+                <tr><td><code>compiler</code></td><td>IR compile deps</td><td><code>langstitch compile</code> IR → Python project</td></tr>
                 <tr><td><code>all</code></td><td>all of the above</td><td>everything</td></tr>
               </tbody>
             </table>
           </div>
-
           <div class="docs-note">
             <span class="docs-note-title">Lazy imports by design</span>
             Each helper imports its dependency lazily and raises a clear, actionable error if the extra is missing — so the core stays light and importable in CI and tooling.
           </div>
-
-          <h3>Verify</h3>
-          <div class="docs-code"><pre>langstitch version
-python -c "import langstitch; print(langstitch.__version__)"</pre></div>
         </section>
 
         <section id="quickstart" class="docs-section">
-          <h2>Quickstart</h2>
-          <p>Scaffold, install, and run a LangStitch agent in a couple of minutes.</p>
+          <h2>Python quickstart</h2>
+          <p>Scaffold, install, and run a Python LangStitch agent in a couple of minutes.</p>
           <div class="docs-code"><pre>langstitch new my-agent      # scaffold
 cd my-agent
 python -m venv .venv &amp;&amp; . .venv/bin/activate   # (Windows: .venv\Scripts\activate)
@@ -275,7 +357,7 @@ curl -s -X POST localhost:8000/invoke \
         </section>
 
         <section id="first-project" class="docs-section">
-          <h2>Your first project</h2>
+          <h2>Your first Python project</h2>
           <p>Every decorator works <strong>bare or parameterized</strong> and registers at import time.</p>
           <div class="docs-code"><pre>from langstitch import skill
 
@@ -302,8 +384,8 @@ print(result)</pre></div>
         </section>
 
         <section id="project-structure" class="docs-section">
-          <h2>Project structure</h2>
-          <p><code>langstitch new</code> generates a conventional layout where <strong>every concept gets its own package</strong>. A single <code>import app</code> wires up the whole application.</p>
+          <h2>Python project structure</h2>
+          <p><code>langstitch new</code> generates a conventional layout where <strong>every concept gets its own package</strong>. A single <code>import app</code> wires up the whole application. For Spring AI layout, see <a href="#spring-ai-layout">generated Spring AI layout</a>.</p>
           <div class="docs-code"><pre>my-agent/
   application.yaml     # application config (or precompiled application.json)
   env.yaml             # runtime environment variables (gitignored in real projects)
@@ -674,18 +756,29 @@ result = app.invoke({"messages": [{"role": "user", "content": "hi"}]})</pre></di
         </section>
 
         <section id="ir-compiler" class="docs-section">
-          <h2>IR v2 compiler</h2>
-          <p>LangTailor saves agent workflows as <strong>IR v2</strong> documents (<code>*.langstitch.json</code> with <code>irVersion</code>, <code>logical</code>, <code>presentation</code>, and <code>target</code>). The Python SDK compiles the logical graph into a runnable project — canvas layout is ignored at compile time.</p>
-          <div class="docs-code"><pre>pip install "langstitch-sdk[compiler,server,graph]"
+          <h2>IR v2 compilers</h2>
+          <p>LangTailor saves agent workflows as <strong>IR v2</strong> documents (<code>*.langstitch.json</code> with <code>irVersion</code>, <code>logical</code>, <code>presentation</code>, and <code>target</code>). Choose the compiler that matches <code>target.platform</code> — canvas layout is ignored at compile time.</p>
+
+          <div class="docs-runtime-paths">
+            <div class="docs-runtime-path docs-runtime-path--live">
+              <h3>Python · <code>langstitch compile</code></h3>
+              <div class="docs-code"><pre>pip install "langstitch-sdk[compiler,server,graph]"
 langstitch compile my_graph.langstitch.json --out my_graph-build --force
-cd my_graph-build
-pip install -e .
-python -m app
-langstitch run</pre></div>
-          <p>The compiler writes <code>application.yaml</code>, <code>env.yaml</code>, graph modules, and <code>.langstitch-build-manifest.json</code> (node ids + emitted files). IR node ids survive compilation and appear in logs and dev run events.</p>
+cd my_graph-build &amp;&amp; pip install -e . &amp;&amp; langstitch run</pre></div>
+            </div>
+            <div class="docs-runtime-path docs-runtime-path--live">
+              <h3>Spring AI · <code>langstitch-spring-ai compile</code></h3>
+              <div class="docs-code"><pre>java -jar langstitch-spring-ai-0.1.0-all.jar \
+  compile my_graph.langstitch.json --out my_graph-spring --force
+cd my_graph-spring &amp;&amp; mvn spring-boot:run</pre></div>
+              <a class="docs-lang__link" href="#spring-ai">Full Spring AI guide →</a>
+            </div>
+          </div>
+
+          <p>Both compilers write <code>application.yaml</code>, <code>env.yaml</code>, graph modules, and <code>.langstitch-build-manifest.json</code>. IR node ids survive compilation and appear in logs and run events.</p>
           <div class="docs-note tip">
             <span class="docs-note-title">Spec &amp; conformance</span>
-            The IR schema, RunEvent protocol, and conformance fixtures live in the <code>langstitch-spec</code> repository. Unsupported node kinds fail at compile time with a clear error.
+            The IR schema, RunEvent protocol, capability matrices, and fixtures live in <a href="https://github.com/LangStitch/langstitch-spec">langstitch-spec</a>. Unsupported node kinds fail at compile time with a clear error.
           </div>
         </section>
 
@@ -711,8 +804,8 @@ langstitch run
         </section>
 
         <section id="deployment" class="docs-section">
-          <h2>Deployment</h2>
-          <p>A LangStitch app is an ordinary Python service. Containerize it, set the environment, and expose the server port.</p>
+          <h2>Deployment (Python)</h2>
+          <p>A Python LangStitch app is an ordinary service. Containerize it, set the environment, and expose the server port. Spring AI projects deploy as standard Spring Boot apps (<code>mvn spring-boot:run</code> / containerized JAR).</p>
           <div class="docs-code"><pre>FROM python:3.13-slim
 WORKDIR /app
 COPY . .
@@ -728,7 +821,8 @@ CMD ["langstitch", "run", "--host", "0.0.0.0", "--port", "8000"]</pre></div>
 
         <section id="cli" class="docs-section">
           <h2>CLI reference</h2>
-          <p>The <code>langstitch</code> command scaffolds, inspects, and runs projects.</p>
+          <h3>Python · <code>langstitch</code></h3>
+          <p>Scaffolds, inspects, compiles, and runs Python projects.</p>
           <div class="docs-code"><pre>langstitch new &lt;name&gt; [--dir PATH] [--force]   scaffold a project
 langstitch info [--root PATH]                   load config + list components
 langstitch run [--root PATH] [--host] [--port]  start the API server
@@ -736,6 +830,12 @@ langstitch register [--root PATH] [--describe-only]  LangSmith graph registratio
 langstitch compile [document.langstitch.json] [--out DIR] [--force]  IR v2 -> Python project (or config precompile)
 langstitch get &lt;json.path&gt; [--root PATH]        resolve a config path, print as JSON
 langstitch version                              print the SDK version</pre></div>
+
+          <h3>Spring AI · <code>langstitch-spring-ai</code></h3>
+          <div class="docs-code"><pre>langstitch-spring-ai compile &lt;document.langstitch.json&gt; --out &lt;dir&gt; [--force]
+langstitch-spring-ai capabilities
+langstitch-spring-ai version</pre></div>
+          <p>See <a href="#spring-ai">Spring AI docs</a> for Maven Central install and generated layout.</p>
 
           <div class="docs-table-wrap">
             <table>
@@ -783,7 +883,9 @@ python -c "help('langstitch')"</pre></div>
           LangStitch SDK · MIT ·
           <a href="https://langstitch.com/">Home</a> ·
           <a href="https://pypi.org/project/langstitch-sdk/">PyPI</a> ·
-          <a href="https://github.com/LangStitch/langstitch-sdk">GitHub</a> ·
+          <a href="https://central.sonatype.com/artifact/com.langstitch/langstitch-spring-ai/0.1.0">Maven Central</a> ·
+          <a href="https://github.com/LangStitch/langstitch-sdk">Python GitHub</a> ·
+          <a href="https://github.com/LangStitch/langstitch-spring-ai">Spring AI GitHub</a> ·
           <a href="https://langtailor.langstitch.com">LangTailor</a> ·
           <a href="https://marketplace.langstitch.com">Marketplace</a> ·
           <a href="https://langstitch.com/#contact">Business &amp; training</a> ·
